@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>One Month — Our Anniversary</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{ --pink:#ff4da6; --deep:#b30059; --bg1:#ffdde1; --bg2:#ee9ca7; --card: rgba(255,255,255,0.14) }
+  *{box-sizing:border-box}
+  body{ margin:0; font-family:'Poppins',sans-serif; background: linear-gradient(135deg,var(--bg1),var(--bg2)); color:#fff; padding:20px; display:none; }
+  header{ text-align:center; margin-bottom:12px }
+  h1{ font-family:'Great Vibes',cursive; font-size:2.6rem; margin:6px 0 }
+  h2{ margin:12px 0; font-size:1.2rem }
+  section{ max-width:1000px; margin:18px auto; background:var(--card); padding:16px; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,0.12) }
+  .tiny{ font-size:.9rem; opacity:.95; text-align:center }
+  .gallery{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center }
+  .gallery img{ width:30%; max-width:300px; border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,0.2) }
+  @media(max-width:700px){ .gallery img{ width:48% } }
+  @media(max-width:420px){ .gallery img{ width:100% } }
+
+  .letter{ font-family:'Great Vibes',cursive; font-size:1.15rem; line-height:1.7; white-space:pre-wrap; color:#fff }
+  .game{ background: rgba(255,255,255,0.06); padding:10px; border-radius:10px; margin:10px 0 }
+  .q{ margin:8px 0; font-weight:600; color:#fff }
+  .opt{ display:block; margin:4px 0; color:#fff }
+  .coupon{ background:#fff; color:var(--deep); padding:14px; border-radius:12px; font-weight:700; max-width:420px; margin:10px auto; text-align:center; cursor:pointer; border:2px dashed var(--deep) }
+  textarea{ width:100%; min-height:120px; border-radius:10px; padding:12px; border:none; font-size:1rem }
+  button{ background:var(--deep); color:#fff; border:none; padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:600 }
+  .score{ margin-top:8px; font-weight:700 }
+  .qr-wrap{text-align:center}
+  audio{ width:100%; margin-top:10px }
+  /* lockscreen */
+  #lockscreen{ position:fixed; inset:0; background:linear-gradient(135deg,#141e30,#243b55); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; color:#fff; z-index:9999 }
+  #lockscreen input{ padding:10px 12px; border-radius:10px; border:none; width:220px; text-align:center }
+  #lockscreen button{ padding:10px 18px; border-radius:10px; border:none; background:var(--pink); color:#fff; cursor:pointer }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>💞 One Month — Us 💞</h1>
+  <div class="tiny">Unlock to start the surprise — music, games, photos & a love letter</div>
+</header>
+
+<!-- MUSIC -->
+<section>
+  <h2>🎶 Playlist (first 30 seconds each — plays in order)</h2>
+  <audio id="player" controls preload="metadata"></audio>
+  <div class="tiny">Make sure your phone volume is up. Playback starts after unlock.</div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <h2>📸 Our Memories</h2>
+  <div class="gallery">
+    <img src="img1.jpg" alt="Memory 1">
+    <img src="img2.jpg" alt="Memory 2">
+    <img src="img3.jpg" alt="Memory 3">
+    <img src="img4.jpg" alt="Memory 4">
+    <img src="img5.jpg" alt="Memory 5">
+    <img src="img6.jpg" alt="Memory 6">
+    <img src="img7.jpg" alt="Memory 7">
+    <img src="img8.jpg" alt="Memory 8">
+    <img src="img9.jpg" alt="Memory 9">
+    <img src="img10.jpg" alt="Memory 10">
+  </div>
+</section>
+
+<!-- LOVE LETTER (359 words approx) -->
+<section>
+  <h2>💌 A Letter to You</h2>
+  <div class="letter">
+My Love,
+
+From the moment you walked into my life, everything changed. You became my safe space, my joy, and the one person I can’t imagine my days without. It’s funny how little things remind me of you—a song, a random word, or even silence that somehow feels full because I know you exist in my world.
+
+There are so many things I love about you. The way you listen when I speak, the way you laugh at my silliness, and the way you look at me when you think I’m not noticing. With you, even the simplest moments become magical. A normal day becomes extraordinary because you’re in it.
+
+I’ve grown because of you. You’ve shown me what patience looks like, what kindness feels like, and what it means to be truly cared for. Sometimes I wonder what I did to deserve you, and then I realize—I don’t have to deserve you, I just have to cherish you. And that’s exactly what I promise to do, every single day.
+
+This little project is my way of telling you just how much you mean to me. Every song I picked, every picture, every word—it’s all woven with thoughts of you. I want you to smile while going through it, to laugh at the silly parts, and maybe feel a little of the love that overflows in my heart for you.
+
+If I could give you the world, I would. But since I can’t, I’ll give you the time, the attention, the effort, and all the small promises that make a life. You’re not just my love, you’re my best friend, my partner, and the person I want to share all my tomorrows with.
+
+So here’s to us—to our laughter, to our memories, to our quiet mornings and loud silly nights. I don’t know where life will take us, but I do know this: as long as you’re by my side, I’ll always be home.
+
+Forever yours,
+[Your Name]
+  </div>
+</section>
+
+<!-- GAMES: 10 games × 5 questions each (all listed together) -->
+<section>
+  <h2>🎮 Games — Answer & Check Score</h2>
+
+  <!-- Game 1 -->
+  <div class="game" id="game1">
+    <h3>Game 1 — How Well Do We Know Us?</h3>
+
+    <div class="q">1) Who sent the first message after we met?</div>
+    <label class="opt"><input type="radio" name="g1q1" value="A"> A) You</label>
+    <label class="opt"><input type="radio" name="g1q1" value="B"> B) Me</label>
+
+    <div class="q">2) Our first plan was to:</div>
+    <label class="opt"><input type="radio" name="g1q2" value="A"> A) Watch a movie</label>
+    <label class="opt"><input type="radio" name="g1q2" value="B"> B) Go for a walk</label>
+
+    <div class="q">3) Who is the bigger foodie?</div>
+    <label class="opt"><input type="radio" name="g1q3" value="A"> A) You</label>
+    <label class="opt"><input type="radio" name="g1q3" value="B"> B) Me</label>
+
+    <div class="q">4) Which time do we talk most?</div>
+    <label class="opt"><input type="radio" name="g1q4" value="A"> A) Morning</label>
+    <label class="opt"><input type="radio" name="g1q4" value="B"> B) Late night</label>
+
+    <div class="q">5) Our go-to comfort plan is:</div>
+    <label class="opt"><input type="radio" name="g1q5" value="A"> A) Chai + chat</label>
+    <label class="opt"><input type="radio" name="g1q5" value="B"> B) Order in & binge</label>
+
+    <button class="btn" onclick="scoreGame(1)">Check Score</button>
+    <div id="score1" class="score"></div>
+  </div>
+
+  <!-- Game 2 -->
+  <div class="game" id="game2">
+    <h3>Game 2 — Firsts</h3>
+
+    <div class="q">1) First emoji I used with you?</div>
+    <label class="opt"><input type="radio" name="g2q1" value="A"> A) 😂</label>
+    <label class="opt"><input type="radio" name="g2q1" value="B"> B) 🥺</label>
+
+    <div class="q">2) First song we both liked?</div>
+    <label class="opt"><input type="radio" name="g2q2" value="A"> A) A romantic track</label>
+    <label class="opt"><input type="radio" name="g2q2" value="B"> B) A party song</label>
+
+    <div class="q">3) First call length?</div>
+    <label class="opt"><input type="radio" name="g2q3" value="A"> A) Ten minutes</label>
+    <label class="opt"><input type="radio" name="g2q3" value="B"> B) Over an hour</label>
+
+    <div class="q">4) Our first inside joke involved?</div>
+    <label class="opt"><input type="radio" name="g2q4" value="A"> A) Food</label>
+    <label class="opt"><input type="radio" name="g2q4" value="B"> B) A random lyric</label>
+
+    <div class="q">5) My first nickname for you was?</div>
+    <label class="opt"><input type="radio" name="g2q5" value="A"> A) Something sweet</label>
+    <label class="opt"><input type="radio" name="g2q5" value="B"> B) Something silly</label>
+
+    <button class="btn" onclick="scoreGame(2)">Check Score</button>
+    <div id="score2" class="score"></div>
+  </div>
+
+  <!-- Game 3 -->
+  <div class="game" id="game3">
+    <h3>Game 3 — This or That</h3>
+
+    <div class="q">1) Movie night or long drive?</div>
+    <label class="opt"><input type="radio" name="g3q1" value="A"> A) Movie night</label>
+    <label class="opt"><input type="radio" name="g3q1" value="B"> B) Long drive</label>
+
+    <div class="q">2) Street food or fine dine?</div>
+    <label class="opt"><input type="radio" name="g3q2" value="A"> A) Street food</label>
+    <label class="opt"><input type="radio" name="g3q2" value="B"> B) Fine dine</label>
+
+    <div class="q">3) Mountains or beach?</div>
+    <label class="opt"><input type="radio" name="g3q3" value="A"> A) Mountains</label>
+    <label class="opt"><input type="radio" name="g3q3" value="B"> B) Beach</label>
+
+    <div class="q">4) Texts or calls?</div>
+    <label class="opt"><input type="radio" name="g3q4" value="A"> A) Texts</label>
+    <label class="opt"><input type="radio" name="g3q4" value="B"> B) Calls</label>
+
+    <div class="q">5) Sunrise or sunset?</div>
+    <label class="opt"><input type="radio" name="g3q5" value="A"> A) Sunrise</label>
+    <label class="opt"><input type="radio" name="g3q5" value="B"> B) Sunset</label>
+
+    <button class="btn" onclick="scoreGame(3)">Check Score</button>
+    <div id="score3" class="score"></div>
+  </div>
+
+  <!-- Game 4 -->
+  <div class="game" id="game4">
+    <h3>Game 4 — Favorites</h3>
+
+    <div class="q">1) Fav comfort drink?</div>
+    <label class="opt"><input type="radio" name="g4q1" value="A"> A) Chai</label>
+    <label class="opt"><input type="radio" name="g4q1" value="B"> B) Coffee</label>
+
+    <div class="q">2) Fav weather?</div>
+    <label class="opt"><input type="radio" name="g4q2" value="A"> A) Winter</label>
+    <label class="opt"><input type="radio" name="g4q2" value="B"> B) Rainy</label>
+
+    <div class="q">3) Fav dessert to share?</div>
+    <label class="opt"><input type="radio" name="g4q3" value="A"> A) Cake</label>
+    <label class="opt"><input type="radio" name="g4q3" value="B"> B) Ice cream</label>
+
+    <div class="q">4) Fav cuddle position?</div>
+    <label class="opt"><input type="radio" name="g4q4" value="A"> A) Your shoulder</label>
+    <label class="opt"><input type="radio" name="g4q4" value="B"> B) My shoulder</label>
+
+    <div class="q">5) Fav weekend plan?</div>
+    <label class="opt"><input type="radio" name="g4q5" value="A"> A) Netflix + snacks</label>
+    <label class="opt"><input type="radio" name="g4q5" value="B"> B) Day trip</label>
+
+    <button class="btn" onclick="scoreGame(4)">Check Score</button>
+    <div id="score4" class="score"></div>
+  </div>
+
+  <!-- Game 5 -->
+  <div class="game" id="game5">
+    <h3>Game 5 — Memory Lane</h3>
+
+    <div class="q">1) What color was I wearing on our first date?</div>
+    <label class="opt"><input type="radio" name="g5q1" value="A"> A) Blue</label>
+    <label class="opt"><input type="radio" name="g5q1" value="B"> B) Red</label>
+
+    <div class="q">2) Which cafe did we like most?</div>
+    <label class="opt"><input type="radio" name="g5q2" value="A"> A) The cozy one</label>
+    <label class="opt"><input type="radio" name="g5q2" value="B"> B) The trendy one</label>
+
+    <div class="q">3) Our first selfie vibe?</div>
+    <label class="opt"><input type="radio" name="g5q3" value="A"> A) Goofy</label>
+    <label class="opt"><input type="radio" name="g5q3" value="B"> B) Serious</label>
+
+    <div class="q">4) Who said "good morning" first?</div>
+    <label class="opt"><input type="radio" name="g5q4" value="A"> A) Me</label>
+    <label class="opt"><input type="radio" name="g5q4" value="B"> B) You</label>
+
+    <div class="q">5) Our earliest shared obsession?</div>
+    <label class="opt"><input type="radio" name="g5q5" value="A"> A) Memes</label>
+    <label class="opt"><input type="radio" name="g5q5" value="B"> B) Food videos</label>
+
+    <button class="btn" onclick="scoreGame(5)">Check Score</button>
+    <div id="score5" class="score"></div>
+  </div>
+
+  <!-- Game 6 -->
+  <div class="game" id="game6">
+    <h3>Game 6 — Bollywood & Music</h3>
+
+    <div class="q">1) Which decade feels most "us"?</div>
+    <label class="opt"><input type="radio" name="g6q1" value="A"> A) 90s/2000s</label>
+    <label class="opt"><input type="radio" name="g6q1" value="B"> B) Now</label>
+
+    <div class="q">2) Our karaoke pick?</div>
+    <label class="opt"><input type="radio" name="g6q2" value="A"> A) A emo- romantic</label>
+    <label class="opt"><input type="radio" name="g6q2" value="B"> B) A party track</label>
+
+    <div class="q">3) Which song makes you cry (happy)?</div>
+    <label class="opt"><input type="radio" name="g6q3" value="A"> A) Tum Hi Ho</label>
+    <label class="opt"><input type="radio" name="g6q3" value="B"> B) Pehla Nasha</label>
+
+    <div class="q">4) Dance move preference?</div>
+    <label class="opt"><input type="radio" name="g6q4" value="A"> A) Slow sway</label>
+    <label class="opt"><input type="radio" name="g6q4" value="B"> B) Fun choreography</label>
+
+    <div class="q">5) Rainy mood song?</div>
+    <label class="opt"><input type="radio" name="g6q5" value="A"> A) Cozy love</label>
+    <label class="opt"><input type="radio" name="g6q5" value="B"> B) Dramatic hit</label>
+
+    <button class="btn" onclick="scoreGame(6)">Check Score</button>
+    <div id="score6" class="score"></div>
+  </div>
+
+  <!-- Game 7 -->
+  <div class="game" id="game7">
+    <h3>Game 7 — Inside Jokes</h3>
+
+    <div class="q">1) Most used phrase between us?</div>
+    <label class="opt"><input type="radio" name="g7q1" value="A"> A) "Shutup pt2"</label>
+    <label class="opt"><input type="radio" name="g7q1" value="B"> B) "You did not"</label>
+
+    <div class="q">2) Who forgets things more?</div>
+    <label class="opt"><input type="radio" name="g7q2" value="A"> A) You</label>
+    <label class="opt"><input type="radio" name="g7q2" value="B"> B) Me</label>
+
+    <div class="q">3) Our most shared craving?</div>
+    <label class="opt"><input type="radio" name="g7q3" value="A"> A) Pizza</label>
+    <label class="opt"><input type="radio" name="g7q3" value="B"> B) Momos</label>
+
+    <div class="q">4) Who sends the weirdest memes?</div>
+    <label class="opt"><input type="radio" name="g7q4" value="A"> A) You</label>
+    <label class="opt"><input type="radio" name="g7q4" value="B"> B) Me</label>
+
+    <div class="q">5) Our chaos level?</div>
+    <label class="opt"><input type="radio" name="g7q5" value="A"> A) Cute chaos</label>
+    <label class="opt"><input type="radio" name="g7q5" value="B"> B) Full chaos</label>
+
+    <button class="btn" onclick="scoreGame(7)">Check Score</button>
+    <div id="score7" class="score"></div>
+  </div>
+
+  <!-- Game 8 -->
+  <div class="game" id="game8">
+    <h3>Game 8 — Future Plans</h3>
+
+    <div class="q">1) First trip together would be?</div>
+    <label class="opt"><input type="radio" name="g8q1" value="A"> A) Beach</label>
+    <label class="opt"><input type="radio" name="g8q1" value="B"> B) Mountains</label>
+
+    <div class="q">2) Pet we will get?</div>
+    <label class="opt"><input type="radio" name="g8q2" value="A"> A) Puppy</label>
+    <label class="opt"><input type="radio" name="g8q2" value="B"> B) Kitten</label>
+
+    <div class="q">3) Weekend home vibe?</div>
+    <label class="opt"><input type="radio" name="g8q3" value="A"> A) Cozy plants</label>
+    <label class="opt"><input type="radio" name="g8q3" value="B"> B) Minimal chic</label>
+
+    <div class="q">4) Dream bucket list we’ll do first?</div>
+    <label class="opt"><input type="radio" name="g8q4" value="A"> A) Northern lights</label>
+    <label class="opt"><input type="radio" name="g8q4" value="B"> B) Hot air balloon</label>
+
+    <div class="q">5) Celebration style?</div>
+    <label class="opt"><input type="radio" name="g8q5" value="A"> A) Small intimate</label>
+    <label class="opt"><input type="radio" name="g8q5" value="B"> B) Big party</label>
+
+    <button class="btn" onclick="scoreGame(8)">Check Score</button>
+    <div id="score8" class="score"></div>
+  </div>
+
+  <!-- Game 9 -->
+  <div class="game" id="game9">
+    <h3>Game 9 — Who’s More Likely?</h3>
+
+    <div class="q">1) To plan a surprise?</div>
+    <label class="opt"><input type="radio" name="g9q1" value="A"> A) You</label>
+    <label class="opt"><input type="radio" name="g9q1" value="B"> B) Me</label>
+
+    <div class="q">2) To fall asleep first?</div>
+    <label class="opt"><input type="radio" name="g9q2" value="A"> A) You</label>
+    <label class="opt"><input type="radio" name="g9q2" value="B"> B) Me</label>
+
+    <div class="q">3) To start a pillow fight?</div>
+    <label class="opt"><input type="radio" name="g9q3" value="A"> A) You</label>
+    <label class="opt"><input type="radio" name="g9q3" value="B"> B) Me</label>
+
+    <div class="q">4) To pick the movie?</div>
+    <label class="opt"><input type="radio" name="g9q4" value="A"> A) You</label>
+    <label class="opt"><input type="radio" name="g9q4" value="B"> B) Me</label>
+
+    <div class="q">5) To forget the charger?</div>
+    <label class="opt"><input type="radio" name="g9q5" value="A"> A) You</label>
+    <label class="opt"><input type="radio" name="g9q5" value="B"> B) Me</label>
+
+    <button class="btn" onclick="scoreGame(9)">Check Score</button>
+    <div id="score9" class="score"></div>
+  </div>
+
+  <!-- Game 10 -->
+  <div class="game" id="game10">
+    <h3>Game 10 — Rapid Picks</h3>
+
+    <div class="q">1) Date vibe?</div>
+    <label class="opt"><input type="radio" name="g10q1" value="A"> A) Fancy dinner</label>
+    <label class="opt"><input type="radio" name="g10q1" value="B"> B) Cozy home date</label>
+
+    <div class="q">2) Surprise type?</div>
+    <label class="opt"><input type="radio" name="g10q2" value="A"> A) Handwritten note</label>
+    <label class="opt"><input type="radio" name="g10q2" value="B"> B) Bigger gesture</label>
+
+    <div class="q">3) Photo pose?</div>
+    <label class="opt"><input type="radio" name="g10q3" value="A"> A) Cheek boop</label>
+    <label class="opt"><input type="radio" name="g10q3" value="B"> B) Hug from behind</label>
+
+    <div class="q">4) Lazy day?</div>
+    <label class="opt"><input type="radio" name="g10q4" value="A"> A) Pajamas + movies</label>
+    <label class="opt"><input type="radio" name="g10q4" value="B"> B) Naps + snacks</label>
+
+    <div class="q">5) Anniversary treat?</div>
+    <label class="opt"><input type="radio" name="g10q5" value="A"> A) Adventure day</label>
+    <label class="opt"><input type="radio" name="g10q5" value="B"> B) Dessert date</label>
+
+    <button class="btn" onclick="scoreGame(10)">Check Score</button>
+    <div id="score10" class="score"></div>
+  </div>
+
+</section>
+
+<!-- COUPON -->
+<section>
+  <h2>🎟 Your Special Coupon</h2>
+  <div class="coupon" onclick="this.innerHTML='🎟 Redeem: Unlimited Kisses 💋 & Tightest Hugs 🤗 — Valid forever.'">
+    Tap to reveal your coupon
+  </div>
+</section>
+
+<!-- FEEDBACK -->
+<section>
+  <h2>💭 Leave a Note</h2>
+  <textarea id="feedback" placeholder="Write how you felt about this..."></textarea>
+  <div style="text-align:center; margin-top:10px">
+    <button onclick="saveFeedback()">Save & Download Note</button>
+  </div>
+</section>
+
+<!-- QR CODE -->
+<section>
+  <h2>📱 Scan for a Surprise Song</h2>
+  <div class="qr-wrap">
+    <!-- YouTube link for "Tu Aadatein — First Five" embedded as QR -->
+    <img alt="QR code to Tu Aadatein" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=Kf3N5sAkzS4">
+    <div class="tiny">Scan with your phone camera to open "Tu Aadatein — First Five"</div>
+  </div>
+</section>
+
+<!-- LOCKSCREEN element inserted by script so it sits above everything -->
+<div id="lockscreen">
+  <h2>🔒 Enter Password to Unlock</h2>
+  <input id="pw" type="password" placeholder="Enter code">
+  <button onclick="tryUnlock()">Unlock</button>
+  <div class="tiny">Password: <em>shutuppt2</em></div>
+</div>
+
+<script>
+/* ========= MUSIC: play first 30s of each track in given order ========= */
+const playlist = [
+  "dil_nu.mp3",
+  "tu_chahiye.mp3",
+  "rang_sharbaton_ka.mp3",
+  "tu_aadatein.mp3",
+  "tu_pehla_pyaar.mp3",
+  "kkhh_instrumental.mp3"
+];
+
+const player = document.getElementById('player');
+let playTimer = null;
+
+function playIndex(i){
+  if(i >= playlist.length){
+    // optional: loop back to start if you want:
+    // playIndex(0);
+    return;
+  }
+  player.src = playlist[i];
+  // Ensure metadata is loaded then play first 30s (or available length)
+  player.load();
+  player.onloadedmetadata = () => {
+    try { player.currentTime = 0; } catch(e){}
+    player.play().catch(()=>{}); // may require user gesture - unlocked by password
+    clearTimeout(playTimer);
+    // Stop/advance after 30s (or shorter if file <30s)
+    playTimer = setTimeout(()=>{
+      player.pause();
+      playIndex(i+1);
+    }, 30000);
+  };
+}
+
+/* Called after unlock */
+function startPlaylist(){ playIndex(0); }
+
+/* ========= GAMES scoring ========= */
+/* We'll use an answer key (A/B choices) — you can change values if needed */
+const answerKey = {
+  1: ['B','A','B','B','A'],
+  2: ['A','A','B','A','A'],
+  3: ['B','A','A','A','B'],
+  4: ['A','B','A','A','A'],
+  5: ['B','A','A','A','A'],
+  6: ['A','B','A','A','A'],
+  7: ['A','B','A','A','A'],
+  8: ['A','A','A','B','A'],
+  9: ['A','A','A','A','A'],
+  10:['A','B','B','A','A']
+};
+
+function scoreGame(n){
+  const key = answerKey[n];
+  if(!key) return;
+  let correct = 0;
+  for(let q=1;q<=5;q++){
+    const sel = document.querySelector(`input[name="g${n}q${q}"]:checked`);
+    if(sel && sel.value === key[q-1]) correct++;
+  }
+  document.getElementById('score'+n).textContent = `Score: ${correct} / 5 💖`;
+}
+
+/* ========= Feedback save ========= */
+function saveFeedback(){
+  const txt = document.getElementById('feedback').value || '—';
+  const blob = new Blob([txt], {type: 'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'feedback.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/* ========= Password lock handling ========= */
+function tryUnlock(){
+  const pw = document.getElementById('pw').value;
+  if(pw === 'shutuppt2'){
+    document.getElementById('lockscreen').style.display = 'none';
+    document.body.style.display = 'block';
+    // start the playlist after unlock (user gesture satisfied)
+    startPlaylist();
+  } else {
+    alert('Wrong password — try again!');
+  }
+}
+
+/* If user refreshes and page is visible but lockscreen remains, ensure it still blocks:
+   body initially display:none; becomes visible on successful unlock only.
+*/
+
+/* ======== Helpful note: if audio fails due to browser restrictions, ask him to tap Play once ======== */
+
+</script>
+</body>
+</html>
